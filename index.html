@@ -411,7 +411,7 @@
       <button id="playBtn" class="primary">Play · randomize</button>
       <button id="exportBtn">Export PNG</button>
       <button id="exportReelBtn" type="button">Export MP4</button>
-      <button id="exportAllBtn" type="button">Export All 6</button>
+      <button id="exportAllBtn" type="button">Export All Presets</button>
     </div>
   </header>
 
@@ -433,6 +433,7 @@
           <canvas id="noiseCanvas" class="noise-canvas" aria-hidden="true"></canvas>
           <canvas id="paperCanvas" aria-hidden="true"></canvas>
           <canvas id="postCanvas" aria-hidden="true"></canvas>
+          <canvas id="logoFxCanvas" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:35;pointer-events:none;display:none"></canvas>
           <canvas id="blobOverlay" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:40;pointer-events:none;display:none"></canvas>
           <div id="crtOverlay" class="crt-overlay" aria-hidden="true"></div>
         </div>
@@ -463,6 +464,7 @@
             <button data-preset="zine-negative">Prismatic Glass</button>
             <button data-preset="yeso-dither">Binary Matrix</button>
             <button data-preset="neon-glow">LED Stage</button>
+            <button data-preset="fx-thermal">Thermal Echo</button><button data-preset="fx-cyan">Cyan Halation</button><button data-preset="fx-stipple">Stipple Bloom</button><button data-preset="fx-hourglass">Hourglass Chrome</button>
           </div>
           <div class="row">
             <button id="copyConfigBtn" type="button" class="ghost">Copy config</button>
@@ -476,18 +478,18 @@
         <summary>01 · Background</summary>
         <div class="sec-body">
           <div class="grp">
-            <div class="grp__label">Curated palette</div>
+            <div class="grp__label">Upbeat palette</div>
             <div class="swatches" role="group" aria-label="Background palette">
-              <button class="swatch-btn" style="background:#0a0a0a;" data-bg="#0a0a0a" data-inv="1" title="Void · white mark" aria-label="Void, white mark" aria-pressed="false"></button>
-              <button class="swatch-btn" style="background:#22252b;" data-bg="#22252b" data-inv="1" title="Graphite · white mark" aria-label="Graphite, white mark" aria-pressed="false"></button>
-              <button class="swatch-btn" style="background:#f5f5f5;" data-bg="#f5f5f5" data-inv="0" title="Paper · black mark" aria-label="Paper, black mark" aria-pressed="false"></button>
-              <button class="swatch-btn" style="background:#eab05d;" data-bg="#eab05d" data-inv="0" title="Ochre · black mark" aria-label="Ochre, black mark" aria-pressed="false"></button>
-              <button class="swatch-btn" style="background:#9b9b98;" data-bg="#9b9b98" data-inv="0" title="Newsprint · black mark" aria-label="Newsprint, black mark" aria-pressed="false"></button>
-              <button class="swatch-btn" style="background:#f5f1e6;" data-bg="#f5f1e6" data-inv="0" title="Warm cream · black mark" aria-label="Warm cream, black mark" aria-pressed="false"></button>
-              <button class="swatch-btn" style="background:linear-gradient(135deg,#252a32,#89919b);" data-grad="1" data-c1="#252a32" data-c2="#89919b" data-inv="1" title="Silver · white mark" aria-label="Silver gradient, white mark" aria-pressed="false"></button>
-              <button class="swatch-btn" style="background:linear-gradient(135deg,#151b2c,#404256);" data-grad="1" data-c1="#151b2c" data-c2="#404256" data-inv="1" title="Twilight · white mark" aria-label="Twilight gradient, white mark" aria-pressed="false"></button>
-              <button class="swatch-btn" style="background:linear-gradient(135deg,#dce7e8,#dfd2d9);" data-grad="1" data-c1="#dce7e8" data-c2="#dfd2d9" data-inv="0" title="Pearl · black mark" aria-label="Pearl gradient, black mark" aria-pressed="false"></button>
-              <button class="swatch-btn" style="background:#c8102e;" data-bg="#c8102e" data-inv="1" title="Tiger red · white mark" aria-label="Tiger red, white mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:#050508;" data-bg="#050508" data-inv="1" title="Void · white mark" aria-label="Void, white mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:#14161f;" data-bg="#14161f" data-inv="1" title="Stage Slate · white mark" aria-label="Stage Slate, white mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:#f2f5f8;" data-bg="#f2f5f8" data-inv="0" title="Chrome White · black mark" aria-label="Chrome White, black mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:#683bfa;" data-bg="#683bfa" data-inv="1" title="Laser Violet · white mark" aria-label="Laser Violet, white mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:linear-gradient(135deg,#081c28,#74eafa);" data-grad="1" data-c1="#081c28" data-c2="#74eafa" data-inv="1" title="Laser Cyan · white mark" aria-label="Laser Cyan gradient, white mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:linear-gradient(135deg,#240622,#d333a6);" data-grad="1" data-c1="#240622" data-c2="#d333a6" data-inv="1" title="Event Magenta · white mark" aria-label="Event Magenta gradient, white mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:linear-gradient(135deg,#0c0826,#683bfa);" data-grad="1" data-c1="#0c0826" data-c2="#683bfa" data-inv="1" title="Ultraviolet Stage · white mark" aria-label="Ultraviolet Stage gradient, white mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:linear-gradient(135deg,#071426,#1fa8ff);" data-grad="1" data-c1="#071426" data-c2="#1fa8ff" data-inv="1" title="Cobalt Pulse · white mark" aria-label="Cobalt Pulse gradient, white mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:linear-gradient(135deg,#0c0408,#b00c24);" data-grad="1" data-c1="#0c0408" data-c2="#b00c24" data-inv="1" title="Thermal Dark · white mark" aria-label="Thermal Dark gradient, white mark" aria-pressed="false"></button>
+              <button class="swatch-btn" style="background:linear-gradient(135deg,#1f242e,#8b97ab);" data-grad="1" data-c1="#1f242e" data-c2="#8b97ab" data-inv="1" title="Liquid Chrome · white mark" aria-label="Liquid Chrome gradient, white mark" aria-pressed="false"></button>
             </div>
           </div>
 
@@ -551,8 +553,7 @@
           <div class="grp">
             <div class="grp__label">Media</div>
             <div class="row">
-              <button id="bgVideoBtn" class="ghost" type="button">Use video BG</button>
-              <label class="btn" for="bgInput">Upload media</label>
+              <label class="btn" for="bgInput">Upload image / video</label>
               <input id="bgInput" type="file" accept="image/*,video/*" />
               <button id="clearBgBtn" class="ghost" type="button">Clear</button>
             </div>
@@ -808,7 +809,7 @@
       </details>
 
       <details class="sec">
-        <summary>03 · FX</summary>
+        <summary>03 · FX</summary><div class="grp"><div class="grp__label">Logo FX</div><label class="field"><span>Mode</span><select id="logoFxMode" aria-label="Logo FX mode"></select><b></b></label><div id="logoFxControls"></div></div>
         <div class="grp"><div class="grp__label">Blob Track</div><button id="blobBtn" class="tg ghost" type="button" aria-pressed="false"><span class="tg__label">Blob Track</span><span class="tg__state">OFF</span></button><div class="row" id="blobSwatches"><button type="button" data-blob="#ffffff" aria-label="White" style="background:#ffffff;width:30px;height:30px"></button><button type="button" data-blob="#74eafa" aria-label="Cyan" style="background:#74eafa;width:30px;height:30px"></button><button type="button" data-blob="#d8b5ff" aria-label="Violet" style="background:#d8b5ff;width:30px;height:30px"></button><button type="button" data-blob="#00ff88" aria-label="Acid" style="background:#00ff88;width:30px;height:30px"></button><button type="button" data-blob="#ff2a5f" aria-label="Red" style="background:#ff2a5f;width:30px;height:30px"></button><input id="blobColor" type="color" value="#ffffff" aria-label="Blob tracking color"></div><label class="field"><span>Sensitivity / max blobs</span><input id="blobCount" type="range" min="4" max="24" value="12" aria-label="Blob tracking sensitivity and maximum count"><b id="blobCountVal">12</b></label></div>
         <div class="sec-body">
           <div class="grp">
@@ -1356,6 +1357,10 @@
   Object.assign(PRESETS['zine-negative'], {surfaceFill:'glass',glow:true,glowColor:'#86dfff',glowPx:7});
   Object.assign(PRESETS['yeso-dither'], {surfaceFill:'solid',flatColor:'#ffffff',paperShader:'matrix',glow:false});
   Object.assign(PRESETS['neon-glow'], {surfaceFill:'chrome',arrangement:'lockup',format:2,glow:true,glowColor:'#74eafa',glowPx:8,blobTrack:true,blobColor:'#74eafa',blobCount:14});
+  PRESETS['fx-thermal'] = { ...PRESETS['chrome-spin'], surfaceFill: 'solid', flatColor: '#ffffff', glow: false, rotation: 'pendulum', markScale: 56, logoFx: 'thermal', logoFxParams: { intensity: 1.0, spread: 0.78, grain: 0.64 } };
+  PRESETS['fx-cyan'] = { ...PRESETS['chrome-spin'], surfaceFill: 'solid', flatColor: '#ffffff', glow: false, rotation: 'pendulum', markScale: 56, logoFx: 'cyan', logoFxParams: { intensity: 1.0, spread: 0.76, grain: 0.58 } };
+  PRESETS['fx-stipple'] = { ...PRESETS['chrome-spin'], surfaceFill: 'solid', flatColor: '#ffffff', glow: false, rotation: 'pendulum', markScale: 56, logoFx: 'stipple', logoFxParams: { intensity: 1.0, spread: 0.78, grain: 0.68 } };
+  PRESETS['fx-hourglass'] = { ...PRESETS['chrome-spin'], surfaceFill: 'chrome', glow: false, rotation: 'pendulum', markScale: 72, logoFx: 'hourglass', logoFxParams: { intensity: 1.0, spread: 0.72, grain: 0.56 } };
   const PRESET_VIDEO = new Set();
 
   const ensureSpin = (want) => { if (spinOn !== want) $('spinBtn').click(); };
@@ -1382,6 +1387,7 @@
   };
 
   let upbeatLogoSequence = 0;
+  let logoLoadPromise = Promise.resolve();
   async function setUpbeatLogo(src) {
     const sequence = ++upbeatLogoSequence;
     blobState?.preview?.reset(); blobState?.output?.reset();
@@ -1402,10 +1408,11 @@
   function applyPreset(name) {
     const cfg = PRESETS[name];
     if (!cfg) return false;
+    setLogoFxMode(cfg.logoFx || 'off', cfg.logoFxParams);
     const logoIndex = {'chrome-spin':1,'video-reel':1,'riso-flipbook':2,'zine-negative':2,'yeso-dither':1,'neon-glow':1}[name] || 1;
     const logoSrc = `./assets/logo-${logoIndex}.svg`;
     $('upbeatLogo').value = logoSrc;
-    setUpbeatLogo(logoSrc).catch(error => { $('threeStatus').textContent = error.message; });
+    logoLoadPromise = setUpbeatLogo(logoSrc).catch(error => { $('threeStatus').textContent = error.message; });
     if (PRESET_VIDEO.has(name)) {
       bgVid.src = './bg-reel.mp4';
       bgVid.style.display = 'block';
@@ -1492,6 +1499,7 @@
       ntscrt: post.enabled,
       ntscrtPreset: post.preset,
       ntscrtParams: { ...postParams() },
+      logoFx: {mode:logoFxState.mode,intensity:logoFxState.intensity,spread:logoFxState.spread,grain:logoFxState.grain},
     };
   }
 
@@ -1628,6 +1636,11 @@
       const want = !!cfg.blobTrack;
       if (blobState.enabled !== want) $('blobBtn').click();
       applied.push('blobTrack');
+    }
+    if (cfg.logoFx && typeof cfg.logoFx === 'object' && window.LogoFX) {
+      const schema=window.LogoFX.LOGO_FX; const mode=schema.modes.some(x=>x[0]===cfg.logoFx.mode)?cfg.logoFx.mode:'off';
+      for(const [key,[min,max]] of Object.entries(schema.ranges)){const n=Number(cfg.logoFx[key]);if(Number.isFinite(n))logoFxState[key]=Math.min(max,Math.max(min,n));}
+      setLogoFxMode(mode); document.querySelectorAll('#logoFxControls input').forEach(input=>{const key=input.dataset.key;if(key)input.value=logoFxState[key]});
     }
     if (has('ntscrt') || has('ntscrtPreset') || has('ntscrtParams')) {
       if (has('ntscrtPreset') && window.TbPost?.POST_PRESETS?.[cfg.ntscrtPreset]) {
@@ -1903,7 +1916,7 @@
     bgVid.style.display = "block";
     bgVid.play().catch(() => { $('threeStatus').textContent = 'Background video could not play. Choose another video.'; });
   }
-  $('bgVideoBtn').addEventListener('click', () => {
+  $('bgVideoBtn')?.addEventListener('click', () => {
     if (!bgVid.src) bgVid.src = './bg-reel.mp4';
     playBackgroundVideo();
     repaintBg();
@@ -2379,6 +2392,21 @@
   }
   (function blobPreview(){requestAnimationFrame(blobPreview);if(!blobState.enabled || recordState || !window.createBlobTracker)return; const dpr=Math.min(devicePixelRatio||1,2),w=Math.round(frame.clientWidth*dpr),h=Math.round(frame.clientHeight*dpr);if(!w||!h)return;const overlay=$('blobOverlay');if(overlay.width!==w||overlay.height!==h){overlay.width=w;overlay.height=h}const o=overlay.getContext('2d');o.clearRect(0,0,w,h);drawBlobOverlay(o,w,h,'preview');})();
 
+  function drawLogoOnly(ctx, w, h, clear = true) {
+    if (clear) ctx.clearRect(0, 0, w, h);
+    if (spinOn) drawMark(ctx, w, h, window.paperLayer?.canvas3d || $('threeCanvas'), true);
+    else if (shaderActive() && drawShaderMark(ctx, w, h)) { /* shader is the mark */ }
+    else if (usingLogoVideo) drawMark(ctx, w, h, logoCanvas, false);
+    else drawMark(ctx, w, h, fvsMark, false);
+  }
+  const logoFxState={mode:'off',intensity:1,spread:.76,grain:.62,colorCore:'#fff2bd',colorMid:'#ff7014',colorOuter:'#d60d24',pipeline:null,scratch:document.createElement('canvas'),inputs:{},colors:{}};
+  function setLogoFxColors(pal){if(!pal)return;for(const k of ['colorCore','colorMid','colorOuter']){if(!pal[k])continue;logoFxState[k]=pal[k];const el=logoFxState.colors[k];if(el){el.value=pal[k];el.nextElementSibling.textContent=pal[k].toUpperCase();}}}
+  function setLogoFxMode(mode,params){logoFxState.mode=mode;$('logoFxMode').value=mode;const on=mode!=='off';$('logoFxCanvas').style.display=on?'block':'none';$('threeCanvas').style.opacity=on?'0':'';logoLayer.style.opacity=on?'0':'';const schema=window.LogoFX?.LOGO_FX;const base=schema?.defaults||{};for(const key of ['intensity','spread','grain']){const val=params?.[key]??base[key]??logoFxState[key];logoFxState[key]=val;const el=logoFxState.inputs[key];if(el){el.value=String(val);el.nextElementSibling.textContent=Number(val).toFixed(2);}}const pal=schema?.modePalettes?.[mode];setLogoFxColors({...(pal||{}),...(params||{})});}
+  function initLogoFx(){if(!window.LogoFX)return;const schema=window.LogoFX.LOGO_FX;Object.assign(logoFxState,schema.defaults);$('logoFxMode').innerHTML='';for(const [value,label] of schema.modes){const o=document.createElement('option');o.value=value;o.textContent=label;$('logoFxMode').append(o)}$('logoFxMode').addEventListener('change',e=>setLogoFxMode(e.target.value));const host=$('logoFxControls');host.innerHTML='';for(const [key,[min,max,step]] of Object.entries(schema.ranges)){const label=document.createElement('label');label.className='field';const span=document.createElement('span');span.textContent=key;const input=document.createElement('input');input.type='range';input.min=min;input.max=max;input.step=step;input.value=logoFxState[key];input.setAttribute('aria-label','Logo FX '+key);input.dataset.key=key;const out=document.createElement('b');out.textContent=Number(logoFxState[key]).toFixed(2);input.addEventListener('input',()=>{logoFxState[key]=Number(input.value);out.textContent=logoFxState[key].toFixed(2)});logoFxState.inputs[key]=input;label.append(span,input,out);host.append(label)}for(const [key,title] of schema.colors){const label=document.createElement('label');label.className='field';const span=document.createElement('span');span.textContent=title;const input=document.createElement('input');input.type='color';input.value=logoFxState[key];input.setAttribute('aria-label','Logo FX '+title);const out=document.createElement('b');out.style.fontSize='9px';out.textContent=logoFxState[key].toUpperCase();input.addEventListener('input',()=>{logoFxState[key]=input.value;out.textContent=input.value.toUpperCase()});logoFxState.colors[key]=input;label.append(span,input,out);host.append(label)}const sw=document.createElement('div');sw.style.cssText='display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:6px';for(const p of schema.palettes){const b=document.createElement('button');b.type='button';b.title=p.name;b.textContent=p.name;b.style.cssText=`height:22px;padding:0 4px;font-size:10px;border:1px solid #333;color:#fff;text-shadow:0 1px 2px #000;cursor:pointer;background:linear-gradient(90deg,${p.colorOuter},${p.colorMid},${p.colorCore})`;b.addEventListener('click',()=>setLogoFxColors(p));sw.append(b)}host.append(sw)}
+  if(window.LogoFX)initLogoFx();else window.addEventListener('logo-fx-ready',initLogoFx,{once:true});
+  function runLogoFx(source,w,h,time){if(logoFxState.mode==='off'||!window.LogoFX)return null;logoFxState.pipeline ||= new window.LogoFX.LogoFX($('logoFxCanvas'));logoFxState.pipeline.render(source,w,h,time,logoFxState);return $('logoFxCanvas')}
+  (function logoFxPreview(now){requestAnimationFrame(logoFxPreview);if(logoFxState.mode==='off'||recordState)return;const dpr=Math.min(devicePixelRatio||1,2),w=Math.round(frame.clientWidth*dpr),h=Math.round(frame.clientHeight*dpr);if(!w||!h)return;const c=logoFxState.scratch;if(c.width!==w||c.height!==h){c.width=w;c.height=h}drawLogoOnly(c.getContext('2d'),w,h);runLogoFx(c,w,h,now/1000)})(performance.now());
+
   /* One entry for stills and video: post when on, plain frame when off. */
   function composeFrame(ctx, w, h, opts = {}) {
     if (!post.enabled) drawFrame(ctx, w, h, opts);
@@ -2627,7 +2655,7 @@
     return layer;
   }
 
-  function drawFrame(ctx, w, h, { print = false, crt = false } = {}) {
+  function drawFrame(ctx, w, h, { print = false, crt = false, time = null } = {}) {
     const cached = bgLayerFor(w, h);
     if (cached) ctx.drawImage(cached, 0, 0);
     else paintBg(ctx, w, h);
@@ -2645,10 +2673,15 @@
       ctx.drawImage(layer, 0, 0);
       ctx.restore();
     }
-    if (spinOn) drawMark(ctx, w, h, window.paperLayer?.canvas3d || $('threeCanvas'), true);
-    else if (shaderActive() && drawShaderMark(ctx, w, h)) { /* shader is the mark */ }
-    else if (usingLogoVideo) drawMark(ctx, w, h, logoCanvas, false);
-    else drawMark(ctx, w, h, fvsMark, false);
+    if (logoFxState.mode !== 'off') {
+      const c = logoFxState.scratch;
+      if (c.width !== w || c.height !== h) { c.width = w; c.height = h; }
+      drawLogoOnly(c.getContext('2d'), w, h, true);
+      const fx = runLogoFx(c, w, h, time ?? performance.now() / 1000);
+      if (fx) ctx.drawImage(fx, 0, 0, w, h);
+    } else {
+      drawLogoOnly(ctx, w, h, false);
+    }
 
     const grain = Number(noiseSlider.value);
     /* Overlay on export; the preview lets CSS blend the same tile. */
@@ -2832,7 +2865,7 @@
 
 
   /* ---- Export All 6: one stitched reel ---------------------------------- */
-  const ALL_PRESETS = ['chrome-spin', 'video-reel', 'riso-flipbook', 'zine-negative', 'yeso-dither', 'neon-glow'];
+  const ALL_PRESETS = Object.keys(PRESETS);
   const allBtn = $('exportAllBtn');
 
   function presetLabel(name) {
@@ -2845,7 +2878,8 @@
     const want = (PRESETS[name] && PRESETS[name].paperShader) || 'off';
     const started = performance.now();
     return new Promise((resolve) => {
-      const check = () => {
+      const check = async () => {
+        await logoLoadPromise;
         const shaderReady = (window.paperLayer?.mode || 'off') === want;
         const filmReady = name !== 'video-reel' || bgVid.readyState >= 2;
         if ((shaderReady && filmReady) || performance.now() - started > 8000) resolve();
@@ -2892,7 +2926,7 @@
 
       for (let index = 0; index < ALL_PRESETS.length; index++) {
         const name = ALL_PRESETS[index];
-        allBtn.textContent = `Exporting ${index + 1}/6 ${presetLabel(name)}…`;
+        allBtn.textContent = `Exporting ${index + 1}/${ALL_PRESETS.length} ${presetLabel(name)}…`;
         if (index > 0) {
           applyPreset(name);
           await waitForPreset(name);
@@ -2913,7 +2947,7 @@
         }
       }
 
-      downloadReel(await encoder.finish(), 'upbeat-rgv-all-6-reel.mp4');
+      downloadReel(await encoder.finish(), 'upbeat-rgv-all-presets-reel.mp4');
     } catch (error) {
       alert('Export All 6 failed: ' + (error && error.message ? error.message : 'unknown error'));
     } finally {
@@ -2987,6 +3021,7 @@
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.186.1/build/three.module.js","three/addons/":"https://unpkg.com/three@0.186.1/examples/jsm/","@paper-design/shaders":"https://unpkg.com/@paper-design/shaders@0.0.82/dist/index.js"}}</script>
 <script type="module" src="./paper-layer.js"></script>
 <script type="module" src="./blob-track.js"></script>
+<script type="module" src="./logo-fx.js"></script>
 <script type="module" src="./tb-post.js"></script>
 <script type="module" src="./bento-three.js"></script>
 </body>
