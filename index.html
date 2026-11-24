@@ -2685,7 +2685,7 @@
       if (spinOn) window.__tb3d?.endExportCapture?.();
     }
     const a = document.createElement("a");
-    a.download = "tigersblood-fvs-studio.png";
+    a.download = "upbeat-rgv-fvs-studio.png";
     a.href = canvas.toDataURL("image/png");
     a.click();
   });
@@ -2815,7 +2815,7 @@
         await encoder.add(frameIndex);
         reelButton.textContent = `RENDER ${frameIndex + 1} / ${totalFrames}`;
       }
-      downloadReel(await encoder.finish(), 'tigersblood-reel.mp4');
+      downloadReel(await encoder.finish(), 'upbeat-rgv-reel.mp4');
     } catch (error) {
       alert('Video export failed: ' + (error?.message || error));
     } finally {
@@ -2913,7 +2913,7 @@
         }
       }
 
-      downloadReel(await encoder.finish(), 'tigersblood-all-6-reel.mp4');
+      downloadReel(await encoder.finish(), 'upbeat-rgv-all-6-reel.mp4');
     } catch (error) {
       alert('Export All 6 failed: ' + (error && error.message ? error.message : 'unknown error'));
     } finally {
